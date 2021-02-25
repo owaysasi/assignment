@@ -1,4 +1,6 @@
 import react from 'react';
+import interval from '../../pics/time.png';
+import archive from '../../pics/archive.png';
 import {useState, useEffect} from 'react';
 import './Conversation.css';
 
@@ -7,10 +9,27 @@ function Conversation() {
     const [ msg , setMsg ] = useState("");
     const [ chat , setChat ] = useState([]);
     const [ time , setTime ] = useState([]);
+    const [ seconds , setSeconds ] = useState(0);
+    const [ minutes , setMinutes ] = useState(1);
 
-    // useEffect(() => {
-
-    // });
+    useEffect(()=>{
+        let myInterval = setInterval(() => {
+                if (seconds > 0) {
+                    setSeconds(seconds - 1);
+                }
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(myInterval)
+                    } else {
+                        setMinutes(minutes - 1);
+                        setSeconds(59);
+                    }
+                } 
+            }, 1000)
+            return ()=> {
+                clearInterval(myInterval);
+              };
+        });
 
     const handleSubmit = (e) => {
         let today = new Date();
@@ -28,6 +47,14 @@ function Conversation() {
 
     return(
         <div className="conversation-cont">
+            <div className="chat-header">
+                <h1 className="chat-header-title">New Task</h1>
+                <div className="chat-header-icons">
+                    <p className="chat-header-timer">{minutes}:{seconds}</p>
+                    <img className="chat-header-snooze" src={interval}/>
+                    <img className="chat-header-archive" src={archive}/>
+                </div>
+            </div>
             <div className="chat-history">
                 {chat.map((val, index) => {
                     return (<div key={index} className="chatting-wrapper">

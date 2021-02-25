@@ -1,7 +1,42 @@
 .conversation-cont{
-    width: 500px;
+    width: 700px;
     min-height: 623px;
     border: 1px solid rgb(218, 218, 218);
+}
+
+.chat-header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+.chat-header-title{
+    color: rgb(218, 218, 218);
+    font-size: 24px;
+}
+
+.chat-header-icons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 150px;
+    margin-top: 20px;
+}
+
+.chat-header-timer{
+    color: rgb(167, 167, 167);
+    margin-top: 5px;
+    width: 30px;
+}
+
+.chat-header-snooze{
+    height: 13px;
+    margin-top: 10px;
+}
+
+.chat-header-archive{
+    height: 15px;
+    margin-top: 10px;
 }
 
 .chat-history{
@@ -17,22 +52,25 @@
 
 .chatting{
     text-align: left;
-    background-color: rgb(62, 184, 255);
-    color: white;
+    background-color: rgb(218, 218, 218);
+    color: black;
+    height: 30px;
+    padding-top: 5px;
     padding-left: 10px;
     width: 70%;
-    border-radius: 5px;
+    border-radius: 10px 10px 10px 0px;
 }
 
 .time{
     color: rgb(62, 184, 255);
+    font-size: 10px;
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 5px;
+    top: 25px;
 }
 
 .chat-form{
-    width: 500px;
+    width: 700px;
     height: 50px;
     position: fixed;
     bottom: 0;
@@ -55,7 +93,7 @@
     outline: none;
     width: 10%;
     padding-top: 5px;
-    text-align: center;
+    padding-left: 15px;
     color: white;
     border-radius: 2px;
     background-color: rgb(62, 184, 255);
