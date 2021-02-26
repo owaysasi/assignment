@@ -17,7 +17,14 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: crimson;
     bottom: 5px;
     right: 5px;
+}
+
+.snoozed{
+    background-color: orange;
+}
+
+.active{
+    background-color: crimson;
 }

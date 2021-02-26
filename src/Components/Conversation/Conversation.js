@@ -4,31 +4,33 @@ import archive from '../../pics/archive.png';
 import {useState, useEffect} from 'react';
 import './Conversation.css';
 
-function Conversation({ taskName, enabled }) {
+function Conversation({ taskName, enabled, snoozed, setSnoozed }) {
 
     const [ msg , setMsg ] = useState("");
     const [ chat , setChat ] = useState([]);
     const [ time , setTime ] = useState([]);
     const [ seconds , setSeconds ] = useState(0);
-    const [ minutes , setMinutes ] = useState(1);
+    const [ minutes , setMinutes ] = useState(60);
 
     useEffect(()=>{
-        let myInterval = setInterval(() => {
-                if (seconds > 0) {
-                    setSeconds(seconds - 1);
-                }
-                if (seconds === 0) {
-                    if (minutes === 0) {
-                        clearInterval(myInterval)
-                    } else {
-                        setMinutes(minutes - 1);
-                        setSeconds(59);
+        if(enabled && !snoozed){
+            let myInterval = setInterval(() => {
+                    if (seconds > 0) {
+                        setSeconds(seconds - 1);
                     }
-                } 
-            }, 1000)
-            return ()=> {
-                clearInterval(myInterval);
-            };
+                    if (seconds === 0) {
+                        if (minutes === 0) {
+                            clearInterval(myInterval)
+                        } else {
+                            setMinutes(minutes - 1);
+                            setSeconds(59);
+                        }
+                    } 
+                }, 1000)
+                return ()=> {
+                    clearInterval(myInterval);
+                };
+        }
     });
 
     const handleSubmit = (e) => {
@@ -51,8 +53,19 @@ function Conversation({ taskName, enabled }) {
                 <h1 className="chat-header-title">{taskName}</h1>
                 <div className="chat-header-icons">
                     <p className="chat-header-timer">{minutes}:{seconds}</p>
-                    <img className="chat-header-snooze" src={interval}/>
-                    <img className="chat-header-archive" src={archive}/>
+                    <img className="chat-header-snooze"
+                    onClick={() => {
+                        if(!snoozed){
+                            setSnoozed(true);
+                        }
+                        else{
+                            setSnoozed(false);
+                        }
+                    }} 
+                    src={interval}/>
+                    <img 
+                    className="chat-header-archive" 
+                    src={archive}/>
                 </div>
             </div>
             <div className="chat-history">

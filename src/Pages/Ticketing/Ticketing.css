@@ -1,3 +1,4 @@
-.ticketing-cont{
+.mini-ticketing-cont{
     display: flex;
+    margin-top: -16px;
 }

@@ -3,6 +3,7 @@
     width: 400px;
     background-color: rgba(155, 155, 155, 0.5);
     border-radius: 20px;
+    margin: auto;
 }
 
 .tel-box{
@@ -23,7 +24,7 @@
     position: absolute;
     border: 2px solid black;
     border-radius: 5px;
-    left: 30px;
+    left: 520px;
 }
 
 .select-box select{

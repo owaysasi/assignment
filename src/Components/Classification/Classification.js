@@ -21,7 +21,7 @@ function Classification({ setTaskName, setEnabled }) {
 
                 }}
                 >
-                <label className="select-label">What's the user asking for</label>
+                <label className="select-label">What's the user asking for</label><br/>
                 <select className="select-goal" name="goals" id="goals" onChange={(e) => {
                     // e.preventDefault();
                     setGoal(e.target.value);
@@ -33,7 +33,7 @@ function Classification({ setTaskName, setEnabled }) {
                     <option value="ask">Ask for the business</option>
                 </select>
                 <br/>
-                <label>Task name</label>
+                <label>Task name</label><br/>
                 <input 
                 className="classify-task-name" 
                 name="name" 
@@ -41,8 +41,8 @@ function Classification({ setTaskName, setEnabled }) {
                 onChange={(e) => {
                     setRemaining(25-e.target.value.length);
                     setTaskName(e.target.value);
-                }}/>
-                <label className="remaining">characters left : {remaining}</label>
+                }}/><br/>
+                <label className="remaining">(characters left : {remaining})</label>
                 <button className="btn-submit" type="submit">Procced</button>
             </form>
         </div>
