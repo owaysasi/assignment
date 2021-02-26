@@ -2,19 +2,31 @@ import react from 'react';
 import {useState, useEffect} from 'react';
 import './Classification.css';
 
-function Classification() {
+function Classification({ setTaskName, setEnabled }) {
 
-    const [ taskName , setTaskName ] = useState("New Task");
-    const [ goal, setGoal ] = useState();
+    const [ goal, setGoal ] = useState("select");
     const [ remaining , setRemaining ] = useState(25)
 
     return(
         <div className="classification-cont">
             <h1 className="classify-title"><u>Classify</u></h1>
-            <form>
+            <form className="form-classify" onSubmit={(e) => {
+                if(remaining > -1 && goal !== "select"){
+                    e.preventDefault();
+                    setEnabled(true)
+                }else{
+                    console.log("sorry")
+                    e.preventDefault();
+                }
+
+                }}
+                >
                 <label className="select-label">What's the user asking for</label>
-                <select className="select-goal" name="goals" id="goals">
-                    <option disabled selected value>select</option>
+                <select className="select-goal" name="goals" id="goals" onChange={(e) => {
+                    // e.preventDefault();
+                    setGoal(e.target.value);
+                }}>
+                    <option disabled selected value="select">select</option>
                     <option value="product">Buy a product</option>
                     <option value="cancel">Cancel an account</option>
                     <option value="gift">Buy and Recommend a gift</option>
@@ -28,6 +40,7 @@ function Classification() {
                 placeholder="enter a name"
                 onChange={(e) => {
                     setRemaining(25-e.target.value.length);
+                    setTaskName(e.target.value);
                 }}/>
                 <label className="remaining">characters left : {remaining}</label>
                 <button className="btn-submit" type="submit">Procced</button>

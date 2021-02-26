@@ -1,0 +1,23 @@
+.taskball-wrapper{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgb(218, 218, 218);
+    text-align: center;
+    position: relative;
+    padding-top: 2px;
+}
+
+.taskball-title{
+    font-size: 20px;
+}
+
+.taskball-status{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: crimson;
+    bottom: 5px;
+    right: 5px;
+}

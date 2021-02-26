@@ -4,7 +4,7 @@ import archive from '../../pics/archive.png';
 import {useState, useEffect} from 'react';
 import './Conversation.css';
 
-function Conversation() {
+function Conversation({ taskName, enabled }) {
 
     const [ msg , setMsg ] = useState("");
     const [ chat , setChat ] = useState([]);
@@ -28,8 +28,8 @@ function Conversation() {
             }, 1000)
             return ()=> {
                 clearInterval(myInterval);
-              };
-        });
+            };
+    });
 
     const handleSubmit = (e) => {
         let today = new Date();
@@ -48,7 +48,7 @@ function Conversation() {
     return(
         <div className="conversation-cont">
             <div className="chat-header">
-                <h1 className="chat-header-title">New Task</h1>
+                <h1 className="chat-header-title">{taskName}</h1>
                 <div className="chat-header-icons">
                     <p className="chat-header-timer">{minutes}:{seconds}</p>
                     <img className="chat-header-snooze" src={interval}/>
@@ -64,14 +64,14 @@ function Conversation() {
                         );
                 })}
             </div>
-            <form className="chat-form" onSubmit={handleSubmit}>
+            <form className={`${enabled ? "chat-form" : "chat-form disabled"}`}  onSubmit={handleSubmit}>
                 <input 
-                className="chat-sbmt-field" 
-                placeholder="say something ..."
-                value={msg}
-                onChange={(e) => {
-                    e.preventDefault();
-                    setMsg(e.target.value);
+                    className="chat-sbmt-field" 
+                    placeholder="say something ..."
+                    value={msg}
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setMsg(e.target.value);
                 }}/>
                 <button className="chat-sbmt-btn" type="submit">send</button>
             </form>

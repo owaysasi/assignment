@@ -1,0 +1,12 @@
+.navbar-wrapper{
+    width: 100px;
+    height: 623px;
+    border: 1px solid rgb(62, 184, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.mini-navbar-wrapepr{
+    width: 70px;
+    padding-top: 20px;
+}
