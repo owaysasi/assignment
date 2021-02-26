@@ -7,13 +7,13 @@ function Header(){
         <div className="header-container">
             <div className="mini-h-c">
                 <ul className="header-navbar">
-                    <Link className="navbar-item" activeClassName="is-active" to="/">
+                    <Link className="navbar-item" to="/">
                     Home
                     </Link>
-                    <Link className="navbar-item" activeClassName="is-active" to="/ddpage">
+                    <Link className="navbar-item" to="/ddpage">
                         Double select
                     </Link>
-                    <Link className="navbar-item" activeClassName="is-active" to="/ticketing">
+                    <Link className="navbar-item" to="/ticketing">
                         Ticketing
                     </Link>
                 </ul> 
